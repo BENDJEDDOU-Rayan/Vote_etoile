@@ -39,23 +39,23 @@ void vote(){
     // Boucle 'for' permettant de voter 112 fois aléatoirement
     for(int i = 0; i < 112; ++i){
         tirage = 1 + rand() % 5; // Tirer un nombre aléatoirement entre 1 et 4
-            if(tirage == 1){
-                ++choix_1;
-                choix_1_note = rand() % 6;
-                tableau_note_choix_1.push_back(choix_1_note);
-            } else if (tirage == 2){
-                ++choix_2;
-                choix_2_note = rand() % 6;
-                tableau_note_choix_2.push_back(choix_2_note);
-            } else if (tirage == 3){
-                ++choix_3;
-                choix_3_note = rand() % 6;
-                tableau_note_choix_3.push_back(choix_3_note);
-            } else if (tirage == 4){
-                ++choix_4;
-                choix_4_note = rand() % 6;
-                tableau_note_choix_4.push_back(choix_4_note);
-            }
+        if(tirage == 1){
+            ++choix_1;
+            choix_1_note = rand() % 6;
+            tableau_note_choix_1.push_back(choix_1_note);
+        } else if (tirage == 2){
+            ++choix_2;
+            choix_2_note = rand() % 6;
+            tableau_note_choix_2.push_back(choix_2_note);
+        } else if (tirage == 3){
+            ++choix_3;
+            choix_3_note = rand() % 6;
+            tableau_note_choix_3.push_back(choix_3_note);
+        } else if (tirage == 4){
+            ++choix_4;
+            choix_4_note = rand() % 6;
+            tableau_note_choix_4.push_back(choix_4_note);
+        }
     }
 
     // Calcul de la moyenne de chaque réponse
@@ -106,7 +106,6 @@ void vote(){
 
 int main()
 {
-
     vote();
     return 0;
 }
