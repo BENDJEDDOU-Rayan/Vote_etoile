@@ -36,28 +36,27 @@ void vote(){
     // Initialisation du générateur de nombre
     srand(time(NULL));
 
-    // Boucle 'for' permettant de voter 112 fois aléatoirement
-    for(int i = 0; i < 112; ++i){
+    // Boucle 'for' permettant de voter 113 fois aléatoirement
+    for(int i = 0; i < 113; ++i){
         tirage = 1 + rand() % 5; // Tirer un nombre aléatoirement entre 1 et 4
         if(tirage == 1){
             ++choix_1;
-            choix_1_note = rand() % 6;
+            choix_1_note = 1 + rand() % 6;
             tableau_note_choix_1.push_back(choix_1_note);
         } else if (tirage == 2){
             ++choix_2;
-            choix_2_note = rand() % 6;
+            choix_2_note = 1 + rand() % 6;
             tableau_note_choix_2.push_back(choix_2_note);
         } else if (tirage == 3){
             ++choix_3;
-            choix_3_note = rand() % 6;
+            choix_3_note = 1 + rand() % 6;
             tableau_note_choix_3.push_back(choix_3_note);
         } else if (tirage == 4){
             ++choix_4;
-            choix_4_note = rand() % 6;
+            choix_4_note = 1 + rand() % 6;
             tableau_note_choix_4.push_back(choix_4_note);
         }
     }
-
     // Calcul de la moyenne de chaque réponse
     float moyenne_choix_1;
     float moyenne_choix_2;
@@ -87,19 +86,18 @@ void vote(){
          << endl << "3. Civilization VI : " << roundf(moyenne_choix_3 * 100) / 100 << "/5"
          << endl << "4. Mario Kart : " << roundf(moyenne_choix_4 * 100) / 100 << "/5"
          << endl << "--------------------" << endl;
-
     // Séléction du gagnant
     if(moyenne_choix_1 >= moyenne_choix_2 && moyenne_choix_1 >= moyenne_choix_3 && moyenne_choix_1 >= moyenne_choix_4){
-        cout << "Counter strike a la meilleur note (" << roundf(moyenne_choix_1 * 100) / 100 << "/5)." << endl;
+        cout << "Counter strike a la meilleur note (" << roundf(moyenne_choix_1 * 100) / 100 << "/5)" << endl;
     }
     if(moyenne_choix_2 >= moyenne_choix_1 && moyenne_choix_2 >= moyenne_choix_3 && moyenne_choix_2 >= moyenne_choix_4){
-        cout << "Street FIghter II a la meilleur note (" << roundf(moyenne_choix_2 * 100) / 100 << "/5)." << endl;
+        cout << "Street Fighter II a la meilleur note (" << roundf(moyenne_choix_2 * 100) / 100 << "/5)" << endl;
     }
     if(moyenne_choix_3 >= moyenne_choix_2 && moyenne_choix_3 >= moyenne_choix_1 && moyenne_choix_3 >= moyenne_choix_4){
-        cout << "Civilization VI a la meilleur note (" << roundf(moyenne_choix_3 * 100) / 100 << "/5)." << endl;
+        cout << "Civilization VI a la meilleur note (" << roundf(moyenne_choix_3 * 100) / 100 << "/5)" << endl;
     }
     if(moyenne_choix_4 >= moyenne_choix_3 && moyenne_choix_4 >= moyenne_choix_2 && moyenne_choix_4 >= moyenne_choix_1){
-        cout << "Mario Kart a la meilleur note (" << roundf(moyenne_choix_4 * 100) / 100 << "/5)." << endl;
+        cout << "Mario Kart a la meilleur note (" << roundf(moyenne_choix_4 * 100) / 100 << "/5)" << endl;
     }
 }
 
