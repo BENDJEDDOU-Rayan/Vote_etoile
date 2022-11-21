@@ -66,7 +66,6 @@ void vote(){
     for(unsigned i = 0; i < tableau_note_choix_1.size(); ++i){
         choix_1_total = choix_1_total + tableau_note_choix_1[i];
         moyenne_choix_1 = choix_1_total / tableau_note_choix_1.size();
-
     }
     for(unsigned i = 0; i < tableau_note_choix_2.size(); ++i){
         choix_2_total = choix_2_total + tableau_note_choix_2[i];
@@ -80,7 +79,7 @@ void vote(){
         choix_4_total = choix_4_total + tableau_note_choix_4[i];
         moyenne_choix_4 = choix_4_total / tableau_note_choix_4.size();
     }
-
+    // Affichage des résultats du vote
     cout << endl << "--------------------"
          << endl << "Résultat du vote :"
          << endl << "1. Counter strike (aka CS GO) : " << roundf(moyenne_choix_1 * 100) / 100 << "/5"
