@@ -57,6 +57,8 @@ void vote(){
                 tableau_note_choix_4.push_back(choix_4_note);
             }
     }
+
+    // Calcul de la moyenne de chaque réponse
     float moyenne_choix_1;
     float moyenne_choix_2;
     float moyenne_choix_3;
@@ -84,14 +86,27 @@ void vote(){
          << endl << "1. Counter strike (aka CS GO) : " << roundf(moyenne_choix_1 * 100) / 100 << "/5"
          << endl << "2. Street Fighter II : " << roundf(moyenne_choix_2 * 100) / 100 << "/5"
          << endl << "3. Civilization VI : " << roundf(moyenne_choix_3 * 100) / 100 << "/5"
-         << endl << "4. Mario Kart : " << roundf(moyenne_choix_4 * 100) / 100 << "/5" << endl;
+         << endl << "4. Mario Kart : " << roundf(moyenne_choix_4 * 100) / 100 << "/5"
+         << endl << "--------------------" << endl;
+
+    // Séléction du gagnant
+    if(moyenne_choix_1 >= moyenne_choix_2 && moyenne_choix_1 >= moyenne_choix_3 && moyenne_choix_1 >= moyenne_choix_4){
+        cout << "Counter strike a la meilleur note (" << roundf(moyenne_choix_1 * 100) / 100 << "/5)." << endl;
+    }
+    if(moyenne_choix_2 >= moyenne_choix_1 && moyenne_choix_2 >= moyenne_choix_3 && moyenne_choix_2 >= moyenne_choix_4){
+        cout << "Street FIghter II a la meilleur note (" << roundf(moyenne_choix_2 * 100) / 100 << "/5)." << endl;
+    }
+    if(moyenne_choix_3 >= moyenne_choix_2 && moyenne_choix_3 >= moyenne_choix_1 && moyenne_choix_3 >= moyenne_choix_4){
+        cout << "Civilization VI a la meilleur note (" << roundf(moyenne_choix_3 * 100) / 100 << "/5)." << endl;
+    }
+    if(moyenne_choix_4 >= moyenne_choix_3 && moyenne_choix_4 >= moyenne_choix_2 && moyenne_choix_4 >= moyenne_choix_1){
+        cout << "Mario Kart a la meilleur note (" << roundf(moyenne_choix_4 * 100) / 100 << "/5)." << endl;
+    }
 }
 
 int main()
 {
 
     vote();
-
-
     return 0;
 }
