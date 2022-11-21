@@ -41,19 +41,19 @@ void vote(){
         tirage = 1 + rand() % 5; // Tirer un nombre aléatoirement entre 1 et 4
         if(tirage == 1){
             ++choix_1;
-            choix_1_note = 1 + rand() % 6;
+            choix_1_note = rand() % 6;
             tableau_note_choix_1.push_back(choix_1_note);
         } else if (tirage == 2){
             ++choix_2;
-            choix_2_note = 1 + rand() % 6;
+            choix_2_note = rand() % 6;
             tableau_note_choix_2.push_back(choix_2_note);
         } else if (tirage == 3){
             ++choix_3;
-            choix_3_note = 1 + rand() % 6;
+            choix_3_note = rand() % 6;
             tableau_note_choix_3.push_back(choix_3_note);
         } else if (tirage == 4){
             ++choix_4;
-            choix_4_note = 1 + rand() % 6;
+            choix_4_note = rand() % 6;
             tableau_note_choix_4.push_back(choix_4_note);
         }
     }
