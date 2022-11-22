@@ -86,7 +86,7 @@ void vote(){
          << endl << "3. Civilization VI : " << roundf(moyenne_choix_3 * 100) / 100 << "/5" << " (" << choix_3 << " vote)"
          << endl << "4. Mario Kart : " << roundf(moyenne_choix_4 * 100) / 100 << "/5" << " (" << choix_4 << " vote)"
          << endl << "--------------------" << endl;
-    // Séléction du gagnant
+    // Affichage du jeu le mieux noté
     if(moyenne_choix_1 >= moyenne_choix_2 && moyenne_choix_1 >= moyenne_choix_3 && moyenne_choix_1 >= moyenne_choix_4){
         cout << "Counter strike a la meilleur note (" << roundf(moyenne_choix_1 * 100) / 100 << "/5)" << endl;
     }
