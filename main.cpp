@@ -62,6 +62,8 @@ void vote(){
     float moyenne_choix_2;
     float moyenne_choix_3;
     float moyenne_choix_4;
+
+    // Boucle permettant de calculer la moyenne de chaque note
     for(unsigned i = 0; i < tableau_note_choix_1.size(); ++i){
         choix_1_total = choix_1_total + tableau_note_choix_1[i];
         moyenne_choix_1 = choix_1_total / tableau_note_choix_1.size();
