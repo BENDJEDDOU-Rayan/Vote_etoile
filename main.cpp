@@ -3,107 +3,153 @@
 #include <time.h>
 #include <math.h>
 #include <vector>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
-void vote(){
+
+void voteClassique(){
+
     // Déclaration des variables
-    unsigned choix_1 = 0;
-    unsigned choix_1_note = 0;
-    vector<int> tableau_note_choix_1;
-    float choix_1_total;
-    unsigned choix_2 = 0;
-    unsigned choix_2_note = 0;
-    vector<int> tableau_note_choix_2;
-    float choix_2_total;
-    unsigned choix_3 = 0;
-    unsigned choix_3_note = 0;
-    vector<int> tableau_note_choix_3;
-    float choix_3_total;
-    unsigned choix_4 = 0;
-    unsigned choix_4_note = 0;
-    vector<int> tableau_note_choix_4;
-    float choix_4_total;
-    unsigned tirage;
+    vector <float> tabResultats (4);
 
-    // Affichage des choix de vote
-    cout << "Quel est le meilleur jeu vidéo parmi :"
-             << endl << "1. Counter strike (aka CS GO)"
-             << endl << "2. Street Fighter II"
-             << endl << "3. Civilization VI"
-             << endl << "4. Mario Kart";
+    string ligne;
+    string votes;
 
-    // Initialisation du générateur de nombre
-    srand(time(NULL));
+    vector <string> tabNotesJeux1;
+    vector <string> tabNotesJeux2;
+    vector <string> tabNotesJeux3;
+    vector <string> tabNotesJeux4;
 
-    // Boucle 'for' permettant de voter 113 fois aléatoirement
-    for(int i = 0; i < 113; ++i){
-        tirage = 1 + rand() % 5; // Tirer un nombre aléatoirement entre 1 et 4
-        if(tirage == 1){
-            ++choix_1;
-            choix_1_note = rand() % 6;
-            tableau_note_choix_1.push_back(choix_1_note);
-        } else if (tirage == 2){
-            ++choix_2;
-            choix_2_note = rand() % 6;
-            tableau_note_choix_2.push_back(choix_2_note);
-        } else if (tirage == 3){
-            ++choix_3;
-            choix_3_note = rand() % 6;
-            tableau_note_choix_3.push_back(choix_3_note);
-        } else if (tirage == 4){
-            ++choix_4;
-            choix_4_note = rand() % 6;
-            tableau_note_choix_4.push_back(choix_4_note);
+
+
+    while (true) {
+        getline(cin,ligne);
+        if(cin.eof())break;
+        getline(cin,ligne);
+        getline(cin,votes);
+        tabNotesJeux1.push_back(votes);
+        getline(cin,votes);
+        tabNotesJeux2.push_back(votes);
+        getline(cin,votes);
+        tabNotesJeux3.push_back(votes);
+        getline(cin,votes);
+        tabNotesJeux4.push_back(votes);
+    }
+
+    float ResultatJeux1 = 0;
+    float ResultatJeux2 = 0;
+    float ResultatJeux3 = 0;
+    float ResultatJeux4 = 0;
+
+    // Boucle 'for' permettant de voter nbrVotants fois aléatoirement
+    for(unsigned int i = 0; i < tabNotesJeux1.size(); i++){
+        if(tabNotesJeux1[i] == "1"){
+            ResultatJeux1 += 1;
+      } else if (tabNotesJeux1[i] == "2"){
+            ResultatJeux1 += 2;
+      } else if (tabNotesJeux1[i] == "3"){
+            ResultatJeux1 += 3;
+      } else if (tabNotesJeux1[i] == "4"){
+            ResultatJeux1 += 4;
+      } else if(tabNotesJeux1[i] == "5"){
+            ResultatJeux1 += 5;
+      }
+    }
+    for(unsigned int i = 0; i < tabNotesJeux2.size(); i++){
+        if(tabNotesJeux2[i] == "1"){
+            ResultatJeux2 += 1;
+      } else if (tabNotesJeux2[i] == "2"){
+            ResultatJeux2 += 2;
+      } else if (tabNotesJeux2[i] == "3"){
+            ResultatJeux2 += 3;
+      } else if (tabNotesJeux2[i] == "4"){
+            ResultatJeux2 += 4;
+      } else if (tabNotesJeux2[i] == "5"){
+            ResultatJeux2 += 5;
+      }
+    }
+    for(unsigned int i = 0; i < tabNotesJeux3.size(); i++){
+        if(tabNotesJeux3[i] == "1"){
+            ResultatJeux3 += 1;
+      } else if (tabNotesJeux3[i] == "2"){
+            ResultatJeux3 += 2;
+      } else if (tabNotesJeux3[i] == "3"){
+            ResultatJeux3 += 3;
+      } else if (tabNotesJeux3[i] == "4"){
+            ResultatJeux3 += 4;
+      } else if (tabNotesJeux3[i] == "5"){
+            ResultatJeux3 += 5;
+      }
+    }
+    for(unsigned int i = 0; i < tabNotesJeux4.size(); i++){
+        if(tabNotesJeux4[i] == "1"){
+            ResultatJeux4 += 1;
+      } else if (tabNotesJeux4[i] == "2"){
+            ResultatJeux4 += 2;
+      } else if (tabNotesJeux4[i] == "3"){
+            ResultatJeux4 += 3;
+      } else if (tabNotesJeux4[i] == "4"){
+            ResultatJeux4 += 4;
+      } else if (tabNotesJeux4[i] == "5"){
+            ResultatJeux4 += 5;
+      }
+    }
+
+    float noteJeux1;
+    float noteJeux2;
+    float noteJeux3;
+    float noteJeux4;
+
+    noteJeux1 = ResultatJeux1 / tabNotesJeux1.size();
+    noteJeux2 = ResultatJeux2 / tabNotesJeux2.size();
+    noteJeux3 = ResultatJeux3 / tabNotesJeux3.size();
+    noteJeux4 = ResultatJeux4 / tabNotesJeux4.size();
+
+    tabResultats[0] = noteJeux1;
+    tabResultats[1] = noteJeux2;
+    tabResultats[2] = noteJeux3;
+    tabResultats[3] = noteJeux4;
+
+    float max = 0;
+    float numero = 0;
+    for(unsigned int i = 0; i < tabResultats.size(); i++){
+        if(tabResultats[i] > max){
+            max = tabResultats[i];
+            numero = i;
         }
     }
-    // Calcul de la moyenne de chaque réponse
-    float moyenne_choix_1;
-    float moyenne_choix_2;
-    float moyenne_choix_3;
-    float moyenne_choix_4;
 
-    for(unsigned i = 0; i < tableau_note_choix_1.size(); ++i){
-        choix_1_total = choix_1_total + tableau_note_choix_1[i];
-        moyenne_choix_1 = choix_1_total / tableau_note_choix_1.size();
+    string gagnant;
+    if(numero == 0){
+        gagnant = "Counter strike (aka CS GO)" ;
     }
-    for(unsigned i = 0; i < tableau_note_choix_2.size(); ++i){
-        choix_2_total = choix_2_total + tableau_note_choix_2[i];
-        moyenne_choix_2 = choix_2_total / tableau_note_choix_2.size();
+    else if(numero == 1){
+        gagnant = "Street Fighter II";
     }
-    for(unsigned i = 0; i < tableau_note_choix_3.size(); ++i){
-        choix_3_total = choix_3_total + tableau_note_choix_3[i];
-        moyenne_choix_3 = choix_3_total / tableau_note_choix_3.size();
+    else if(numero == 2){
+        gagnant = "Civilization VI : ";
     }
-    for(unsigned i = 0; i < tableau_note_choix_4.size(); ++i){
-        choix_4_total = choix_4_total + tableau_note_choix_4[i];
-        moyenne_choix_4 = choix_4_total / tableau_note_choix_4.size();
+    else if(numero == 3){
+        gagnant = "Mario Kart : ";
     }
-    // Affichage des résultats du vote
-    cout << endl << "--------------------"
-         << endl << "Résultat du vote :"
-         << endl << "1. Counter strike (aka CS GO) : " << roundf(moyenne_choix_1 * 100) / 100 << "/5" << " (" << choix_1 << " vote)"
-         << endl << "2. Street Fighter II : " << roundf(moyenne_choix_2 * 100) / 100 << "/5" << " (" << choix_2 << " vote)"
-         << endl << "3. Civilization VI : " << roundf(moyenne_choix_3 * 100) / 100 << "/5" << " (" << choix_3 << " vote)"
-         << endl << "4. Mario Kart : " << roundf(moyenne_choix_4 * 100) / 100 << "/5" << " (" << choix_4 << " vote)"
-         << endl << "--------------------" << endl;
-    // Affichage du jeu le mieux noté
-    if(moyenne_choix_1 >= moyenne_choix_2 && moyenne_choix_1 >= moyenne_choix_3 && moyenne_choix_1 >= moyenne_choix_4){
-        cout << "Counter strike a la meilleur note (" << roundf(moyenne_choix_1 * 100) / 100 << "/5)" << endl;
-    }
-    if(moyenne_choix_2 >= moyenne_choix_1 && moyenne_choix_2 >= moyenne_choix_3 && moyenne_choix_2 >= moyenne_choix_4){
-        cout << "Street Fighter II a la meilleur note (" << roundf(moyenne_choix_2 * 100) / 100 << "/5)" << endl;
-    }
-    if(moyenne_choix_3 >= moyenne_choix_2 && moyenne_choix_3 >= moyenne_choix_1 && moyenne_choix_3 >= moyenne_choix_4){
-        cout << "Civilization VI a la meilleur note (" << roundf(moyenne_choix_3 * 100) / 100 << "/5)" << endl;
-    }
-    if(moyenne_choix_4 >= moyenne_choix_3 && moyenne_choix_4 >= moyenne_choix_2 && moyenne_choix_4 >= moyenne_choix_1){
-        cout << "Mario Kart a la meilleur note (" << roundf(moyenne_choix_4 * 100) / 100 << "/5)" << endl;
-    }
+
+    // Affichage des résultats
+    cout << "Résultat du vote :"
+         << endl << "Counter strike (aka CS GO) qui a recu une note totale de " << tabResultats[0] << "/5"
+         << endl << "Street Fighter II qui a recu une note totale de " << tabResultats[1] << "/5"
+         << endl << "Civilization VI qui a recu une note totale de " << tabResultats[2] << "/5"
+         << endl << "Mario Kart qui a recu une note totale de " << tabResultats[3] << "/5"
+         << endl << "--------------------"
+         <<endl;
+     cout << "Le gagnant est " << gagnant << " avec une note de " << max << "/5" << endl;
+
 }
+
 
 int main()
 {
-    vote();
+    voteClassique();
     return 0;
 }
